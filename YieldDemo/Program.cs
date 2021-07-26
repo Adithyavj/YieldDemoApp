@@ -77,7 +77,7 @@ namespace YieldDemo
         private static bool IsPrimeNumber(int value)
         {
             bool output = true;
-            for (int i = 2; i < value / 2; i++)
+            for (int i = 2; i <= value / 2; i++)
             {
                 if (value % i == 0)
                 {
