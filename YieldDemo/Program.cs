@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace YieldDemo
 {
@@ -9,7 +10,7 @@ namespace YieldDemo
         {
             Console.WriteLine("Start of the App");
 
-            var people = DataAccess.GetPeople();
+            var people = DataAccess.GetPeople().Take(2);
             foreach (var p in people)
             {
                 Console.WriteLine($"Read {p.FirstName} {p.LastName}");
