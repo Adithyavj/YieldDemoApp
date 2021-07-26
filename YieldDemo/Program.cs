@@ -25,13 +25,12 @@ namespace YieldDemo
     {
         public static IEnumerable<PersonModel> GetPeople()
         {
-            List<PersonModel> output = new();
+            // using yield keyword we can return multiple objects
 
-            output.Add(new PersonModel("Adithya", "Vijay"));
-            output.Add(new PersonModel("Arjun", "Narayanan"));
-            output.Add(new PersonModel("Jetlin", "Yeldo"));
+            yield return new PersonModel("Adithya", "Vijay");
+            yield return new PersonModel("Arjun", "Narayanan");
+            yield return new PersonModel("Jetlin", "Yeldo");
 
-            return output;
         }
     }
 }
