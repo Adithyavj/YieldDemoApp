@@ -15,12 +15,44 @@ namespace YieldDemo
             //{
             //    Console.WriteLine($"Read {p.FirstName} {p.LastName}");
             //}
-            var primeNumbers = Generators.GetPrimeNumbers().Take(10);
+            var primeNumbers = Generators.GetPrimeNumbers();
 
-            foreach (var prime in primeNumbers)
+            // for iterating through the primeNumbers , we need to call this method of IEnumberable with returns an iterator that iterates through the collection
+            var iterator = primeNumbers.GetEnumerator();
+
+            for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine($"{prime}");
+                // if there is a value next,
+                if (iterator.MoveNext())
+                {
+                    Console.WriteLine(iterator.Current);
+                }
+                else
+                {
+                    break;
+                }
             }
+
+            Console.WriteLine("End of first section");
+            Console.ReadLine();
+
+            for (int i = 0; i < 15; i++)
+            {
+                // if there is a value next,
+                if (iterator.MoveNext())
+                {
+                    Console.WriteLine(iterator.Current);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            //foreach (var prime in primeNumbers)
+            //{
+            //    Console.WriteLine($"{prime}");
+            //}
 
             Console.WriteLine("End of the App");
         }
