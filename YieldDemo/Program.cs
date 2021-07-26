@@ -10,28 +10,51 @@ namespace YieldDemo
         {
             Console.WriteLine("Start of the App");
 
-            var people = DataAccess.GetPeople().Take(2);
-            foreach (var p in people)
+            //var people = DataAccess.GetPeople().Take(2);
+            //foreach (var p in people)
+            //{
+            //    Console.WriteLine($"Read {p.FirstName} {p.LastName}");
+            //}
+            var primeNumbers = Generators.GetPrimeNumbers().Take(10);
+
+            foreach (var prime in primeNumbers)
             {
-                Console.WriteLine($"Read {p.FirstName} {p.LastName}");
+                Console.WriteLine($"{prime}");
             }
 
             Console.WriteLine("End of the App");
         }
     }
 
-
-
-    public static class DataAccess
+    public class Generators
     {
-        public static IEnumerable<PersonModel> GetPeople()
+        public static IEnumerable<int> GetPrimeNumbers()
         {
-            // using yield keyword we can return multiple objects
-
-            yield return new PersonModel("Adithya", "Vijay");
-            yield return new PersonModel("Arjun", "Narayanan");
-            yield return new PersonModel("Jetlin", "Yeldo");
+            int counter = 1;
+            while (true)
+            {
+                if (IsPrimeNumber(counter))
+                {
+                    yield return counter;
+                }
+                counter++;
+            }
 
         }
+
+        private static bool IsPrimeNumber(int value)
+        {
+            bool output = true;
+            for (int i = 2; i < value / 2; i++)
+            {
+                if (value % i == 0)
+                {
+                    output = false;
+                    break;
+                }
+            }
+            return output;
+        }
+
     }
 }
